@@ -17,13 +17,13 @@
 > would you check it?
 
 1. Assumption 1
-   - **Question:** _TODO_
-   - **Assumption:** _TODO_
-   - **Risk:** _TODO_
+   - **Question:**  Because ADD transactions include a category while REMOVE and SEARCH commands do not, how should the system handle an ADD line that specifies a different category for an existing item, or a REMOVE/SEARCH command referencing an item that has not been added yet?
+   - **Assumption:** An item's category is defined by its initial valid ADD transaction, and any subsequent ADD with a conflicting category like REMOVE/SEARCH targeting an unknown item is flagged as a warning without creating unintended inventory records.
+   - **Risk:** If the transaction log uses later ADD entries to re-categorize supplies rather than treating category mismatches as errors, locking in the first category or skipping updates could make low stock reports inconsistent with actual clinic inventory.
 2. Assumption 2
-   - **Question:** _TODO_
-   - **Assumption:** _TODO_
-   - **Risk:** _TODO_
+   - **Question:** What are the hourly and daily consumption rates for high-turn medical supplies such as gloves and gauze, how do restock lead times affect supply runway, and how does demand fluctuate based on daily or weekly patient volume?
+   - **Assumption:** A standardized low-stock threshold of 10 units is applied uniformly across all inventory items to establish a consistent baseline for alerts.
+   - **Risk:** A flat 10-unit threshold may be insufficient during high-volume clinic days or weeks, increasing the likelihood of stockouts on fast-moving supplies like gauze before replenishment arrives. Historical REMOVE entries in the transaction dataset can be analyzed to measure actual usage velocity and validate whether category-specific thresholds are needed.
 
 ## The 3+ edge cases you found and handled
 
