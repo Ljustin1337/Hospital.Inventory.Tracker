@@ -12,20 +12,38 @@ Before your final push you'll rename this folder to analysis/.
 import json
 
 
-class YourInventoryItem:
+class MedSupply:
     """
-    TODO: rename this class to something that fits your scenario, and
-    write a real docstring. What does one of these represent? At minimum
-    you'll need a name and a quantity. Add what your stakeholder asked
-    for, not more and not less.
+    Medical supply tracked for community health clinic operations.
+
+    Supports Priya in preventing mid-appointment stockouts of critical items
+    and surfacing low-stock items within each supply category. Also flags
+    malformed transaction log entries so invalid lines cannot alter inventory
+    counts.
+
+    Operational Expectations:
+    - Category Stock Transparency: Tracks on-hand and low-stock quantities,
+      using thresholds by supply category (such as PPE, Wound Care, Medication,
+      and Equipment).
+    - Data Integrity: Flags misspelled commands, missing or non-numeric
+      quantities, extra fields in rows, and impossible removals rather than
+      silently changing counts.
     """
 
-    def __init__(self):
+    def __init__(self, name, quantity, category, min_stock, is_active):
+        self.name = name
+        self.quantity = quantity
+        self.category = category
+        self.min_stock = min_stock
+        self.is_active = is_active
+
+
         # TODO: add your own parameters (self, plus each attribute you're
         # tracking) and store each one as self.whatever = whatever.
         pass
 
-    def is_low_stock(self):
+
+        return
         """TODO: write your own docstring."""
         # TODO: return True or False. Your stakeholder didn't say what
         # "low" means, so decide, and write down the assumption in
