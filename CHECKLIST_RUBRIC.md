@@ -12,9 +12,9 @@ This file has four parts:
 The minimum for a complete, passing project. It's the same list as the
 MVP checklist in the LMS.
 
-- [ ] **Scenario chosen** from `PROJECT_OVERVIEW.md`, **with the other 3 data
+- [x] **Scenario chosen** from `PROJECT_OVERVIEW.md`, **with the other 3 data
   files deleted**.
-- [ ] **Assumptions written down** (Question, Assumption, Risk) in
+- [x ] **Assumptions written down** (Question, Assumption, Risk) in
   `REFLECTION.md`, including what counts as low stock.
 - [ ] **Your own class**, with attributes that fit your stakeholder's
   need, used throughout (no separate lists or dicts holding the same
