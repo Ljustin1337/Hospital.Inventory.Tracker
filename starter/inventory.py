@@ -13,6 +13,7 @@ import json
 
 
 class MedSupply:
+   
     """
     Medical supply tracked for community health clinic operations.
 
@@ -30,25 +31,51 @@ class MedSupply:
       silently changing counts.
     """
 
-    def __init__(self, name, quantity, category, min_stock, is_active):
+
+    def __init__(self, name, quantity, category, min_stock=10, is_active=True):
         self.name = name
         self.quantity = quantity
         self.category = category
         self.min_stock = min_stock
         self.is_active = is_active
-
-
+    
+    """
+    Set up a new supply item with a starting count, 
+    status and catergory. While setting the minimn stock of 10
+    is set to active unless said otherwise.
+    """
         # TODO: add your own parameters (self, plus each attribute you're
         # tracking) and store each one as self.whatever = whatever.
-        pass
+      
+    min_stock = 10
 
+    def is_low_stock(self):
+        return self.quantity <= self.min_stock
+  
+glove_m= MedSupply("Nitrile Exam Gloves (M)",48, "PPE")
 
-        return
-        """TODO: write your own docstring."""
+glove_l= MedSupply("Nitrile Exam Gloves (L)",15, "PPE")
+
+print("Prior Changes:")
+print(f" glove_m: qty={glove_m.quantity}, low={glove_m.is_low_stock()}")
+print(f" glove_m: qty={glove_l.quantity}, low={glove_l.is_low_stock()}")
+
+glove_m.quantity= 6
+
+print("Changed glove(m) to 8:")
+print(f" glove_m: qty={glove_m.quantity}, low={glove_m.is_low_stock()}")
+print(f" glove_m: qty={glove_l.quantity}, low={glove_l.is_low_stock()}")
+
+    
+"""
+    This method returns true if the stock ever hits the min stock
+    so these items will stand out when restocking comes around
+    and returns false of stock is above the needed threshold. 
+"""
         # TODO: return True or False. Your stakeholder didn't say what
         # "low" means, so decide, and write down the assumption in
         # REFLECTION.md's "Assumptions" section.
-        pass
+pass
 
 
 def read_batch_file(filepath):
